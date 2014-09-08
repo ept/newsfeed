@@ -76,11 +76,6 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.6.2</version>
     </dependency>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-jaxrs</artifactId>
-      <version>1.8.5</version>
-    </dependency>
   </dependencies>
 
   <properties>
@@ -102,20 +97,7 @@
       <name>Scala-tools Maven2 Repository</name>
       <url>https://oss.sonatype.org/content/groups/scala-tools</url>
     </repository>
-    <!-- for zkclient -->
-    <repository>
-      <id>sonatype</id>
-      <url>http://oss.sonatype.org/content/groups/public</url>
-    </repository>
   </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>scala-tools.org</id>
-      <name>Scala-tools Maven2 Repository</name>
-      <url>http://scala-tools.org/repo-releases</url>
-    </pluginRepository>
-  </pluginRepositories>
 
   <build>
     <plugins>
