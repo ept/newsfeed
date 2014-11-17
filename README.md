@@ -41,7 +41,7 @@ Then you can build and run the newsfeed jobs as follows:
 * `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-home-timeline.properties`
 * `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-generate-follows.properties`
   (if necessary; automatically terminates after creating a social graph of a certain size)
-* `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-generate-follows.properties`
+* `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-generate-messages.properties`
   (if necessary; keeps running and continually generates random messages)
 
 You can use Hello Samza's kafka-console-consumer to inspect the output, e.g. the
