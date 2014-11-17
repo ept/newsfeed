@@ -75,13 +75,17 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
     // Colon is used as separator, and semicolon is lexicographically after colon
     KeyValueIterator<String, String> followers = socialGraph.range(sender + ":", sender + ";");
 
-    while (followers.hasNext()) {
-      String[] follow = followers.next().getKey().split(":");
-      if (!follow[0].equals(sender)) {
-        throw new IllegalStateException("Social graph db prefix doesn't match: " + sender + " != " + follow[0]);
+    try {
+      while (followers.hasNext()) {
+        String[] follow = followers.next().getKey().split(":");
+        if (!follow[0].equals(sender)) {
+          throw new IllegalStateException("Social graph db prefix doesn't match: " + sender + " != " + follow[0]);
+        }
+        message.put("recipient", follow[1]);
+        collector.send(new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message));
       }
-      message.put("recipient", follow[1]);
-      collector.send(new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message));
+    } finally {
+      followers.close();
     }
   }
 
